@@ -1,6 +1,6 @@
-#include "entro-shift.h"
+#include "rainshift.h"
 
-uint32_t entro_shift(uint32_t entropy) {
+uint32_t rainshift(uint32_t entropy) {
   entropy ^= (entropy << 14) ^ (entropy >> 13);
   entropy = ~(entropy ^ 1111111111) - (~entropy << 5);
   entropy = (entropy << 31) + (entropy >> 1);
