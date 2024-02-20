@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <time.h>
-#include "rainshift.h"
+#include "stormdrop.h"
 
 int main(void) {
-  uint32_t entropy = rainshift(time((void *) 0));
+  uint32_t entropy = stormdrop(time((void *) 0));
 
   printf("%u\n", entropy);
-  entropy = rainshift(entropy);
+  entropy = stormdrop(entropy);
   printf("%u\n", entropy);
-  entropy = rainshift(entropy);
+  entropy = stormdrop(entropy);
   printf("%u\n", entropy);
   return 0;
 }
