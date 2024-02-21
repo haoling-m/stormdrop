@@ -6,5 +6,5 @@ uint32_t stormdrop(uint32_t entropy) {
   entropy += entropy << 3;
   entropy ^= (entropy >> 10);
   entropy += entropy << 3;
-  return entropy ^ ((entropy >> 1) << 10);
+  return ((entropy >> 1) << 10) ^ entropy;
 }
