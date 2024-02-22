@@ -9,10 +9,15 @@ Read [this article](stormdrop-is-a-new-32-bit-prng-that-passes-statistical-tests
 ## Usage
 ``` c
 #include <stdio.h>
+#include <time.h>
 #include "stormdrop.h"
 
 int main(void) {
-  uint32_t entropy = stormdrop(0);
+  struct timespec stormdrop_time;
+  uint32_t entropy;
+
+  clock_gettime(CLOCK_REALTIME, &stormdrop_time);
+  entropy = stormdrop(stormdrop_time.tv_nsec);
 
   printf("%u\n", entropy);
   entropy = stormdrop(entropy);
