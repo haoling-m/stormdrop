@@ -39,6 +39,6 @@ The return value data type is `uint32_t`.
 It returns the 32-bit unsigned integer pseudo-random number result.
 
 ## Support
-StormDrop was designed and developed by [Wil Parsons](https://wilparsons.com/).
+StormDrop was designed and developed by [Wil Parsons](https://wilparsons.github.io).
 
 I'm available for freelance work to extend, implement or modify StormDrop and other algorithms.
