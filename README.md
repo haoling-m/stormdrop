@@ -35,7 +35,7 @@ This is the pseudo-randomization function that accepts the 2 following arguments
 
 `state` is an array with 1 32-bit unsigned integer initialized with any value.
 
-`entropy` is a 32-bit unsigned integer initialized with any value or the previous pseudo-random number result from `stormdrop()`.
+`entropy` is a 32-bit unsigned integer initialized with any value or the previous pseudo-random number result.
 
 The return value data type is `uint32_t`.
 
