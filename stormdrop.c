@@ -1,9 +1,9 @@
 #include "stormdrop.h"
 
-void stormdrop(uint32_t *entropy) {
-  entropy[1] ^= entropy[1] << 19;
-  entropy[1] ^= (entropy[1] ^ (entropy[0])++) >> 3;
-  entropy[1] ^= (entropy[0] + entropy[1]) << 6;
-  entropy[1] ^= entropy[1] >> 7;
-  entropy[1] ^= (entropy[1] << 5) ^ entropy[0];
+uint32_t stormdrop(uint32_t *state, uint32_t entropy) {
+  entropy ^= entropy << 19;
+  entropy ^= (entropy ^ (*state)++) >> 3;
+  entropy ^= (*state + entropy) << 6;
+  entropy ^= entropy >> 7;
+  return *state ^ (entropy << 5);
 }
