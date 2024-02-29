@@ -31,11 +31,15 @@ int main(void) {
 
 ## Reference
 #### `stormdrop()`
-This is the pseudo-randomization function that accepts the following argument.
+This is the pseudo-randomization function that accepts the 2 following arguments.
 
-`entropy` is an array with 2 32-bit unsigned integers. The first is the state initialized at `0` and the second is the pseudo-random number result.
+`state` is an array with 1 32-bit unsigned integer initialized with any value.
 
-The return value data type is `void`.
+`entropy` is a 32-bit pseudo-random unsigned integer initialized with any value.
+
+The return value data type is `uint32_t`.
+
+It returns the 32-bit unsigned integer pseudo-random number result.
 
 ## Support
 StormDrop was designed and developed by [Wil Parsons](https://github.com/wilparsons).
