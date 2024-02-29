@@ -14,16 +14,16 @@ Read [this article](stormdrop-is-a-new-32-bit-prng-that-passes-statistical-tests
 
 int main(void) {
   struct timespec stormdrop_time;
-  uint32_t entropy;
+  uint32_t entropy[2] = {0, 0};
 
   clock_gettime(CLOCK_REALTIME, &stormdrop_time);
-  entropy = stormdrop(stormdrop_time.tv_nsec);
-
-  printf("%u\n", entropy);
-  entropy = stormdrop(entropy);
-  printf("%u\n", entropy);
-  entropy = stormdrop(entropy);
-  printf("%u\n", entropy);
+  entropy[1] = stormdrop_time.tv_nsec;
+  stormdrop(entropy);
+  printf("%u\n", entropy[1]);
+  stormdrop(entropy);
+  printf("%u\n", entropy[1]);
+  stormdrop(entropy);
+  printf("%u\n", entropy[1]);
   return 0;
 }
 ```
@@ -32,11 +32,9 @@ int main(void) {
 #### `stormdrop()`
 This is the pseudo-randomization function that accepts the following argument.
 
-`entropy` is the 32-bit unsigned integer seed initialized with a value.
+`entropy` is an array with 2 32-bit unsigned integers. The first is the state initialized at `0` and the second is the pseudo-random number result.
 
-The return value data type is `uint32_t`.
-
-It returns the 32-bit unsigned integer pseudo-random number result.
+The return value data type is `void`.
 
 ## Support
 StormDrop was designed and developed by [Wil Parsons](https://github.com/wilparsons).
