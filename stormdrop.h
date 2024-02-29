@@ -3,5 +3,5 @@
 
 #include <stdint.h>
 
-uint32_t stormdrop(uint32_t entropy);
+void stormdrop(uint32_t *entropy);
 #endif
