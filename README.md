@@ -8,22 +8,20 @@ Read [this article](stormdrop-is-a-new-32-bit-prng-that-passes-statistical-tests
 
 ## Usage
 ``` c
-
 #include <stdio.h>
 #include <time.h>
 #include "stormdrop.h"
 
 int main(void) {
   struct timespec stormdrop_time;
-  uint32_t state[1] = {0};
   uint32_t entropy;
 
   clock_gettime(CLOCK_REALTIME, &stormdrop_time);
-  entropy = stormdrop(state, stormdrop_time.tv_nsec);
+  entropy = stormdrop(stormdrop_time.tv_nsec);
   printf("%u\n", entropy);
-  entropy = stormdrop(state, entropy);
+  entropy = stormdrop(entropy);
   printf("%u\n", entropy);
-  entropy = stormdrop(state, entropy);
+  entropy = stormdrop(entropy);
   printf("%u\n", entropy);
   return 0;
 }
@@ -31,9 +29,7 @@ int main(void) {
 
 ## Reference
 #### `stormdrop()`
-This is the pseudo-randomization function that accepts the 2 following arguments.
-
-`state` is an array with 1 32-bit unsigned integer initialized with any value.
+This is the pseudo-randomization function that accepts the following argument.
 
 `entropy` is a 32-bit unsigned integer initialized with any value or the previous pseudo-random number result.
 
