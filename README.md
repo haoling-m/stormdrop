@@ -16,13 +16,17 @@ int main(void) {
   struct timespec stormdrop_time;
   uint32_t entropy;
 
-  clock_gettime(CLOCK_REALTIME, &stormdrop_time);
-  entropy = stormdrop(stormdrop_time.tv_nsec);
-  printf("%u\n", entropy);
-  entropy = stormdrop(entropy);
-  printf("%u\n", entropy);
-  entropy = stormdrop(entropy);
-  printf("%u\n", entropy);
+  if (clock_gettime(CLOCK_REALTIME, &stormdrop_time) == 0) {
+    entropy = stormdrop(stormdrop_time.tv_nsec);
+    printf("%u\n", entropy);
+    entropy = stormdrop(entropy);
+    printf("%u\n", entropy);
+    entropy = stormdrop(entropy);
+    printf("%u\n", entropy);
+  } else {
+    printf("There was a system clock error.");
+  }
+
   return 0;
 }
 ```
