@@ -14,14 +14,16 @@ Read [this article]((https://medium.com/@wilparsons/stormdrop-is-a-new-32-bit-pr
 
 int main(void) {
   struct timespec stormdrop_time;
+  uint32_t state[4] = {0, 0, 0, 0};
   uint32_t entropy;
 
   if (clock_gettime(CLOCK_REALTIME, &stormdrop_time) == 0) {
-    entropy = stormdrop(stormdrop_time.tv_nsec);
+    state[0] = stormdrop_time.tv_nsec;
+    entropy = stormdrop(state, stormdrop_time.tv_nsec);
     printf("%u\n", entropy);
-    entropy = stormdrop(entropy);
+    entropy = stormdrop(state, entropy);
     printf("%u\n", entropy);
-    entropy = stormdrop(entropy);
+    entropy = stormdrop(state, entropy);
     printf("%u\n", entropy);
   } else {
     printf("There was a system clock error.");
@@ -33,9 +35,11 @@ int main(void) {
 
 ## Reference
 #### `stormdrop()`
-This is the pseudo-randomization function that accepts the following argument.
+This is the pseudo-randomization function that accepts the 2 following arguments.
 
-`entropy` is a 32-bit unsigned integer initialized with any value or the previous pseudo-random number result.
+`state` is an array with 4 32-bit unsigned integers initialized with any value. The first 32 bits and last 64 bits are suitable for additional pseudo-random bits.
+
+`entropy` is a 32-bit unsigned integer initialized with any value and defined subsequently with the previous pseudo-random number result.
 
 The return value data type is `uint32_t`.
 
