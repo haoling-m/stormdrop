@@ -4,7 +4,7 @@
 ## Description
 StormDrop is a 32-bit, pseudo-random number generator algorithm.
 
-Read [this article]((https://medium.com/@wilparsons/stormdrop-is-a-new-32-bit-prng-that-passes-statistical-tests-with-efficient-resource-usage-59b6d6d9c1a8) for an in-depth explanation.
+Read [this article](https://medium.com/@wilparsons/stormdrop-is-a-new-32-bit-prng-that-passes-statistical-tests-with-efficient-resource-usage-59b6d6d9c1a8) for an in-depth explanation.
 
 ## Usage
 ``` c
