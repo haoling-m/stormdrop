@@ -11,15 +11,13 @@ StormDrop is subject to the software licensing terms from the [LICENSE file](htt
 
 ## Reference
 #### `stormdrop()`
-This is the pseudo-randomization function that accepts the 2 following arguments.
+This is the pseudo-randomization function that accepts the following argument.
 
-`state` is an array with 4 32-bit unsigned integers initialized with any value. The first 32 bits and last 64 bits are suitable for additional pseudo-random bits.
-
-`entropy` is a 32-bit unsigned integer initialized with any value and defined subsequently with the previous pseudo-random number result.
+`state` is an array with 4 32-bit unsigned integers initialized with any value.
 
 The return value data type is `uint32_t`.
 
-It returns the 32-bit unsigned integer pseudo-random number result.
+It returns the 32-bit unsigned integer pseudo-random number result from `state[3]`.
 
 ## Usage
 ``` c
@@ -33,7 +31,7 @@ int main(void) {
 
   if (clock_gettime(CLOCK_REALTIME, &stormdrop_time) == 0) {
     state[0] = stormdrop_time.tv_nsec;
-    entropy = stormdrop(state, stormdrop_time.tv_nsec);
+    entropy = stormdrop(state);
   }
 
   return 0;
