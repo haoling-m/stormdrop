@@ -1,5 +1,5 @@
 # StormDrop
-![StormDrop Logo](https://repository-images.githubusercontent.com/743602480/00d0e520-07e5-4dee-99f2-eaa277a8691e)
+![StormDrop Logo](https://repository-images.githubusercontent.com/743602480/14910e7c-11ea-4615-ab60-b7e44cf217ef)
 
 ## Description
 StormDrop is a 32-bit, pseudo-random number generator algorithm.
