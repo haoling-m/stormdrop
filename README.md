@@ -9,6 +9,8 @@ Read [this article](https://medium.com/@williamstaffordparsons/stormdrop-is-a-ne
 ## License
 StormDrop is subject to the software licensing terms from the [LICENSE file](https://github.com/williamstaffordparsons/stormdrop/blob/master/LICENSE).
 
+The non-refundable, one-time fee can be paid with [this link](https://www.paypal.com/ncp/payment/H3QSJRFHDQKPS).
+
 ## Reference
 #### `stormdrop()`
 This is the pseudo-randomization function that accepts the following argument.
@@ -21,19 +23,13 @@ It returns the 32-bit unsigned integer pseudo-random number result from `state[3
 
 ## Usage
 ``` c
-#include <time.h>
 #include "stormdrop.h"
 
 int main(void) {
-  struct timespec stormdrop_time;
   uint32_t state[4] = {0, 0, 0, 0};
   uint32_t entropy;
 
-  if (clock_gettime(CLOCK_REALTIME, &stormdrop_time) == 0) {
-    state[0] = stormdrop_time.tv_nsec;
-    entropy = stormdrop(state);
-  }
-
+  entropy = stormdrop(state);
   return 0;
 }
 ```
