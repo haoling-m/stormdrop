@@ -15,7 +15,7 @@ The non-refundable, one-time fee can be paid with [this link](https://www.paypal
 #### `stormdrop()`
 This is the pseudo-randomization function that accepts the following argument.
 
-`state` is an array with 4 32-bit unsigned integers initialized with any value.
+`state` is an array with 3 32-bit unsigned integers initialized with any value.
 
 The return value data type is `uint32_t`.
 
@@ -26,7 +26,7 @@ It returns the 32-bit unsigned integer pseudo-random number result from `state[3
 #include "stormdrop.h"
 
 int main(void) {
-  uint32_t state[4] = {0, 0, 0, 0};
+  uint32_t state[3] = {0, 0, 0};
   uint32_t entropy;
 
   entropy = stormdrop(state);
